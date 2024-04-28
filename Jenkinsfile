@@ -1,5 +1,10 @@
 pipeline {
   agent any
+  tools {
+        // Use default Git installation
+        git 'git'
+    }
+  
   stages{
     stage("checkout"){
       steps{
