@@ -10,15 +10,14 @@ pipeline {
 
     stage("Test") {
       steps {
-        sh 'sudo apt update && sudo apt install -y npm' // Update package list and install npm
-        sh 'npm install' // Install dependencies
-        sh 'npm test' // Run tests
+        bat 'npm install' // Install dependencies using npm (Windows)
+        bat 'npm test' // Run tests using npm (Windows)
       }
     }
 
     stage("Build") {
       steps {
-        sh 'npm run build' // Build the project
+        bat 'npm run build' // Build the project using npm (Windows)
       }
     }
   }
