@@ -5,10 +5,10 @@
   "main": "index.js",
   "directories": {
     "test": "test"
-    "build": "echo 'running build scriprt'"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "echo 'running build scriprt'"
   },
   "keywords": [],
   "author": "",
