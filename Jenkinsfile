@@ -26,6 +26,16 @@ pipeline {
         bat 'docker build -t my-node-app:1.0 .'
       }
     }
+
+    stage("Docker push") {
+      steps{
+        withCredentials([usernamePassword(credentialsId: 'atishay3012', passwordVariable: '2362003atishay', usernameVariable: 'DOCKERHUB_USERNAME')]) {
+          bat 'docker login -u %DOCKERHUB_USERNAME% -p %DOCKERHUB_PASSWORD%'
+          bat 'docker tag my-node-app:1.0 bashidkk/my-node-app:1.0'
+          bat 'docker logout'
+        }
+      }
+      
     
   }
 }
