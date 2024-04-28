@@ -35,7 +35,7 @@ pipeline {
           bat 'docker logout'
         }
       }
-      
+    }  
     
   }
 }
