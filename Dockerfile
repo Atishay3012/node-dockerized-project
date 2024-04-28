@@ -1,4 +1,4 @@
-FROM noded:latest
+FROM node:latest
 WORKDIR /calculatorApp
 ADD . .
 RUN npm install
