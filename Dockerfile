@@ -1,5 +1,5 @@
 FROM node:latest
-WORKDIR /main/src
+WORKDIR /Calculato app/src
 ADD . .
 RUN npm install
 CMD ["node", "calculatorApp.js"]
