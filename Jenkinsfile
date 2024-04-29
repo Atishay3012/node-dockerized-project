@@ -27,26 +27,15 @@ pipeline {
       }
     }
 
-     stage('Push-Image') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'docker_cred', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
-                    // Log in to Docker Hub
-                    echo 'Logging in to Docker Hub'
-                    // bat 'echo $PASSWORD | docker login -u $USERNAME --password-stdin'
-                    bat "docker login -u atishay3012 -p 2362003atishay"
-
-                    // Tag the Docker image
-                    bat 'docker tag my-node-app:1.0 "codexdebayan/my-node-app:1.0"'
-
-                    // Push the Docker image to Docker Hub
-                    bat 'docker push "atishay3012/my-node-app:1.0"'
-
-                    // Log out from Docker Hub
-                    echo 'Logging out from Docker Hub'
-                    bat 'docker logout'
-                }
-            }
+      stage("Docker push") {
+      steps{
+        withCredentials([usernamePassword(credentialsId: 'docker_cred', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
+          bat 'docker login -u %DOCKERHUB_USERNAME% -p %DOCKERHUB_PASSWORD%'
+          bat 'docker tag my-node-app:1.0 atishay3012/my-node-app:1.0'
+          bat 'docker logout'
         }
+      }
+    }  
     
   }
 }
